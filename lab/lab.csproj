@@ -57,6 +57,8 @@
     </ApplicationDefinition>
     <Compile Include="src\Graph.cs" />
     <Compile Include="src\GraphEdge.cs" />
+    <Compile Include="src\Route.cs" />
+    <Compile Include="src\RouteItem.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

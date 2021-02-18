@@ -5,11 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        WindowState="Maximized">
     <Grid>
-        <Canvas x:Name="Canvas" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
-            <Ellipse Fill="#FFF4F4F5" Height="100" Canvas.Left="350" Stroke="Black" Canvas.Top="190" Width="100"/>
-        </Canvas>
-
+        <Canvas x:Name="Canvas" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </Window>

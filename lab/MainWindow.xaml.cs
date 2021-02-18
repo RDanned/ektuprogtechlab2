@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Reflection;
 using lab.src;
 
 namespace lab
@@ -19,55 +20,57 @@ namespace lab
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// N 2.3.13
     public partial class MainWindow : Window
     {
-        List<Graph> graphs;
-        List<GraphEdge> edges;
-        Random rnd = new Random();
+        List<Route> routes = new List<Route>();
+        public static Random rnd = new Random();
+        int routesCount = 3;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            int stationsCount = rnd.Next(5, 10);
-
-            for(int i = 0; i != stationsCount; i++)
+            int angle = 0;
+            for (int i = 0; i != this.routesCount; i++)
             {
-                if(graphs.Count > 0)
-                {
-                    Graph oldGraph = this.getLastGraph();
-                    Graph newGraph = this.addGraph(i);
+                angle = rnd.Next(-90, 90);
+                Console.WriteLine(i);
+                Route route = new Route(Canvas);
+                route.color = this.pickRandomBrush();
+                route.setId(i);
+                route.setAngle(angle);
 
-                    GraphEdge edge = new GraphEdge();
-                    edge.addEdges(oldGraph, newGraph);
+                route.generateRoute();
 
-                    this.addEdge();
-                } 
-                else
-                {
-                    this.addGraph(i);
-                }
+                route.draw();
+
+                this.addRoute(route);
+
+
             }
-
         }
 
-        private Graph addGraph(int id)
+        private void addRoute(Route route)
         {
-            Graph graph = new Graph();
-            graph.setId(id);
-            graph.setName($"Станция {id}");
-            this.graphs.Add(graph);
-
-            return graph;
+            this.routes.Add(route);
         }
 
-        private void addEdge(GraphEdge edge)
+        private SolidColorBrush pickRandomBrush()
         {
-            this.edges.Add(edge);
-        }
+            SolidColorBrush result = Brushes.Transparent;
 
-        private Graph getLastGraph()
-        {
-            return this.graphs.Last();
+            int Seed = (int)DateTime.Now.Ticks;
+            Random rnd = new Random(Seed);
+
+            Type brushesType = typeof(Brushes);
+
+            PropertyInfo[] properties = brushesType.GetProperties();
+
+            int random = rnd.Next(properties.Length);
+            result = (SolidColorBrush)properties[random].GetValue(null, null);
+
+            return result;
         }
     }
 }
