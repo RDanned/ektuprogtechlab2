@@ -10,10 +10,10 @@ using System.Windows.Media;
 
 namespace lab.src
 {
-    class Graph
+    class Graph: Drawable
     {
         int id;
-        string name;
+        public string name;
         int radius = 10;
         public int x = 0;
         public int y = 0;

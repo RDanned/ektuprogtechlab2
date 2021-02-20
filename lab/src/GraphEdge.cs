@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace lab.src
 {
-    class GraphEdge
+    class GraphEdge: Drawable
     {
         Graph g1;
         Graph g2;

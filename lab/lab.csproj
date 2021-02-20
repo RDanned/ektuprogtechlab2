@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="src\Drawable.cs" />
     <Compile Include="src\Graph.cs" />
     <Compile Include="src\GraphEdge.cs" />
     <Compile Include="src\Route.cs" />

@@ -43,11 +43,23 @@ namespace lab
 
                 route.generateRoute();
 
-                route.draw();
+                route.draw(Canvas);
 
                 this.addRoute(route);
 
 
+            }
+
+            foreach(Route route in routes)
+            {
+                foreach(Graph graph in route.graphs)
+                {
+                    if(graph.name != null)
+                    {
+                        RoutesList.Items.Add(new { routeId = Convert.ToString(route.id), station = graph.name });
+                    }
+                    Console.WriteLine(graph.name);
+                }
             }
         }
 

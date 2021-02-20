@@ -8,6 +8,27 @@
         Title="MainWindow"
         WindowState="Maximized">
     <Grid>
-        <Canvas x:Name="Canvas" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Canvas  Grid.Column="0" Grid.Row="0" x:Name="Canvas" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF494949"/>
+        <WrapPanel Grid.Column="1" Grid.Row="0" Margin="50,100,0,0" >
+            <DataGrid Grid.Column="1" Grid.Row="0" Name="RoutesList" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Маршрут" Binding="{Binding Path=routeId}"/>
+                    <DataGridTextColumn Header="Станция" Binding="{Binding Path=station}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <!--<DataGrid Grid.Column="1" Grid.Row="1" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="First Name"  Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="Last Naasdfme" Binding="{Binding LastName}" />
+                </DataGrid.Columns>
+            </DataGrid>-->
+        </WrapPanel>
     </Grid>
 </Window>
